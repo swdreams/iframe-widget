@@ -1,8 +1,8 @@
 {
   "name": "ds-iframe-widget",
-  "version": "1.0.1",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.2",
+  "description": "Iframe widget wrapper with iframe-resizer.",
+  "main": "dist/ds-iframe-widget.js",
   "scripts": {
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
