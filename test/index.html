@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dropspace mint widget example</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style>
+        .flex {
+            display: block;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        html, body {
+            margin: 0;
+        }
+
+        #myIframe {
+            min-height: 450px;
+            margin: 0 auto;
+            box-shadow: rgb(72 73 121 / 15%) 0px 0px 15px 0px;
+        }
+    </style>
+</head>
+<body>
+<script src="./../dist/ds-iframe-widget.js"></script>
+<script>
+  DsIframeWidget.init('#myIframe');
+</script>
+<iframe id="myIframe" title="Transak On/Off Ramp Widget"
+        src="http://192.168.110.46:3000/widget/New-Contract-V2.1?apiKey=[YOUR_PRODUCTION_API_KEY]&[QUERY_PARAMETERS]"
+        frameborder="no" allowtransparency="true" allowfullscreen=""
+        style="display: block; width: 1px; min-width: 100%; max-height: 625px;"
+        scrolling="no"
+>
+</iframe>
+
+</body>
+</html>
