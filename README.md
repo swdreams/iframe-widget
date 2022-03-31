@@ -4,7 +4,7 @@
 [![NPM Downloads](https://img.shields.io/npm/dm/ds-iframe-widget.svg)](https://npm-stat.com/charts.html?package=ds-iframe-widget&from=2022-03-25)
 [![](https://data.jsdelivr.com/v1/package/npm/ds-iframe-widget/badge?style=rounded)](https://www.jsdelivr.com/package/npm/ds-iframe-widget)
 
-version: 1.0.2
+version: 1.0.3
 
 This project was bootstrapped with [iframe-resizer](https://github.com/davidjbradshaw/iframe-resizer).
 
@@ -12,7 +12,7 @@ This project was bootstrapped with [iframe-resizer](https://github.com/davidjbra
 
 In the project directory, you can run:
 
-### `npm build`
+### `npm run build`
 
 
 ## Example

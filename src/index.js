@@ -15,7 +15,7 @@ export function init(iframeId, initialSettings = {}) {
   }
 
   const iframeResizerSettings = {
-    log: initialSettings.log || true,
+    log: initialSettings.log || false,
     checkOrigin: initialSettings.checkOrigin || false,
   }
 

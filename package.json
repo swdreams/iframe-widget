@@ -1,6 +1,6 @@
 {
   "name": "ds-iframe-widget",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Iframe widget wrapper with iframe-resizer.",
   "main": "dist/ds-iframe-widget.js",
   "scripts": {
