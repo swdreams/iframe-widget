@@ -131,10 +131,28 @@ function init(iframeId, initialSettings = {}) {
     }
   }
 
+  this.getUrl = () => {
+    let url = this.settings.baseUrl;
+    if (!url) {
+      if (this.settings.env == 'development') {
+        url = `http://192.168.110.46:3000`;
+      } else if (this.settings.env == 'staging') {
+        url = `https://staging-widget2.dropspace.art`;
+      } else {
+        url = `https://widget2.dropspace.art`;
+      }
+    }
+    url += `/widget?api_key=${this.api_key}`;
+    if (this.settings.widgetMode === 'modal') {
+      url += `&modal=1`;
+    }
+    return url;
+  }
+
   this.showWidgetModal = () => {
     if (!this.getIframeModalWrap()) return;
 
-    this.iframeEle.src = `http://192.168.110.46:3000/widget?api_key=${this.api_key}&modal=1`;
+    this.iframeEle.src = this.getUrl();
     this.getIframeModalWrap().classList.add('dsw-wrap-opened');
     this.getIframe().style.height = '270px';
     // console.log(this.getIframe().style.height);
@@ -190,6 +208,7 @@ function init(iframeId, initialSettings = {}) {
     if (this.settings.widgetMode == 'modal') {
       this.initWidgetModal();
     } else {
+      this.getIframeModalFireButton().src = this.getUrl();
       iframeResize(this.iframeResizerSettings, this.settings.iframeId);
     }
   };

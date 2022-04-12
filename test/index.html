@@ -21,7 +21,7 @@
         }
 
         #myIframe {
-            min-height: 450px;
+            min-height: 350px;
             margin: 0 auto;
             box-shadow: rgb(72 73 121 / 15%) 0px 0px 15px 0px;
         }
@@ -30,18 +30,21 @@
 <body>
 <script src="./../dist/ds-iframe-widget.js"></script>
 <script>
-  DsIframeWidget.init('#myIframe');
-  // DsIframeWidget.init('#myButton', {widgetMode: 'modal', api_key: "21392x52z8hrm1jk"});
+  DsIframeWidget.init('#myIframe', {
+    // api_key: "",
+    env: "development", // production | development | staging
+    widgetMode: "modal"
+    // baseUrl: "https://bing.com/"
+  });
 </script>
-<iframe id="myIframe"
+<!--<iframe id="myIframe"
         title="dropspace widget"
-        src="http://192.168.110.46:3000/widget?api_key=21392x52z8hrm1jk"
         frameborder="no" allowtransparency="true" allowfullscreen=""
         style="display: block; width: 1px; min-width: 100%;"
         scrolling="no"
 >
-</iframe>
-<button id="myButton">Mint on dropspace</button>
+</iframe>-->
+<button id="myIframe">Mint on dropspace</button>
 <div style=""></div>
 </body>
 </html>
