@@ -1,10 +1,11 @@
 {
   "name": "ds-iframe-widget",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Iframe widget wrapper with iframe-resizer.",
   "main": "dist/ds-iframe-widget.js",
   "scripts": {
     "build": "webpack",
+    "watch": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -12,7 +13,9 @@
     "widget",
     "iframe",
     "resizable iframe",
-    "iframe-resizer"
+    "iframe-resizer",
+    "iframe popup",
+    "iframe dialog"
   ],
   "repository": {
     "type": "git",

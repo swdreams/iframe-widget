@@ -6,10 +6,12 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>
+        body{
+            background: black;
+        }
         .flex {
             display: block;
         }
-
         .flex-wrap {
             flex-wrap: wrap;
         }
@@ -29,14 +31,17 @@
 <script src="./../dist/ds-iframe-widget.js"></script>
 <script>
   DsIframeWidget.init('#myIframe');
+  // DsIframeWidget.init('#myButton', {widgetMode: 'modal', api_key: "21392x52z8hrm1jk"});
 </script>
-<iframe id="myIframe" title="Transak On/Off Ramp Widget"
-        src="http://192.168.110.46:3000/widget/New-Contract-V2.1?apiKey=[YOUR_PRODUCTION_API_KEY]&[QUERY_PARAMETERS]"
+<iframe id="myIframe"
+        title="dropspace widget"
+        src="http://192.168.110.46:3000/widget?api_key=21392x52z8hrm1jk"
         frameborder="no" allowtransparency="true" allowfullscreen=""
-        style="display: block; width: 1px; min-width: 100%; max-height: 625px;"
+        style="display: block; width: 1px; min-width: 100%;"
         scrolling="no"
 >
 </iframe>
-
+<button id="myButton">Mint on dropspace</button>
+<div style=""></div>
 </body>
 </html>

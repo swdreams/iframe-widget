@@ -4,7 +4,7 @@
 [![NPM Downloads](https://img.shields.io/npm/dm/ds-iframe-widget.svg)](https://npm-stat.com/charts.html?package=ds-iframe-widget&from=2022-03-25)
 [![](https://data.jsdelivr.com/v1/package/npm/ds-iframe-widget/badge?style=rounded)](https://www.jsdelivr.com/package/npm/ds-iframe-widget)
 
-version: 1.0.4
+version: 1.1.0
 
 This project was bootstrapped with [iframe-resizer](https://github.com/davidjbradshaw/iframe-resizer).
 
@@ -12,23 +12,41 @@ This project was bootstrapped with [iframe-resizer](https://github.com/davidjbra
 
 In the project directory, you can run:
 
-### `npm run build`
+    `npm run build`
 
+## Include library.
+    
+    // client page
+    <script src="https://cdn.jsdelivr.net/npm/ds-iframe-widget/dist/ds-iframe-widget.js"></script>
 
-## Example
-    <script src="https://unpkg.com/browse/ds-iframe-widget@1.0.0/dist/ds-iframe-widget.js"></script>
+    // host page that is served in iframe
+    <script src="https://cdn.jsdelivr.net/npm/ds-iframe-widget/dist/ds-iframe-widget-content.js"></script>
+    
+
+## Example 1 embedded page.
+    
+    <script src="https://cdn.jsdelivr.net/npm/ds-iframe-widget/dist/ds-iframe-widget.js"></script>
     <script>
       DsIframeWidget.init('#myIframe');
     </script>
 
-    
     <iframe id="myIframe" title="Iframe Widget"
         src="https://global.transak.com?apiKey=[YOUR_PRODUCTION_API_KEY]&[QUERY_PARAMETERS]"
         frameborder="no" allowtransparency="true" allowfullscreen=""
-        style="display: block; width: 1px; min-width: 100%; max-height: 625px;"
+        style="display: block; width: 1px; min-width: 100%;"
         scrolling="no"
     >
     </iframe>
+
+## Example 2 modal popup.
+    
+    <script src="https://cdn.jsdelivr.net/npm/ds-iframe-widget/dist/ds-iframe-widget.js"></script>
+    <script>
+        DsIframeWidget.init('#myButton', {widgetMode: 'modal', api_key: "API Key"});
+    </script>        
+    
+    <button id="myButton">Mint on dropspace</button>
+    
 
 ## Authors
 [Liki Crus](https://github.com/swdreams)

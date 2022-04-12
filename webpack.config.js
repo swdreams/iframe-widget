@@ -1,12 +1,6 @@
 const path = require("path")
 
-module.exports = {
-  entry: path.resolve(__dirname, "src/index.js"),
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "ds-iframe-widget.js",
-    library: "DsIframeWidget",
-  },
+var config = {
   module: {
     rules: [
       {
@@ -18,3 +12,25 @@ module.exports = {
   },
   mode: "production",
 }
+
+var HostConfig = Object.assign({}, config, {
+  entry: path.resolve(__dirname, "src/ds-iframe-widget.js"),
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "ds-iframe-widget.js",
+    library: "DsIframeWidget",
+  },
+});
+
+var clientConfig = Object.assign({}, config, {
+  entry: path.resolve(__dirname, "src/ds-iframe-widget-content.js"),
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "ds-iframe-widget-content.js",
+    libraryTarget: 'umd',
+    // library: "iframeResizerContentWindow",
+  },
+});
+
+
+module.exports = [clientConfig, HostConfig]
