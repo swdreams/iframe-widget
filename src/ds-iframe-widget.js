@@ -208,7 +208,8 @@ function init(iframeId, initialSettings = {}) {
     if (this.settings.widgetMode == 'modal') {
       this.initWidgetModal();
     } else {
-      this.getIframeModalFireButton().src = this.getUrl();
+      if (!this.getIframeModalFireButton().src)
+        this.getIframeModalFireButton().src = this.getUrl();
       iframeResize(this.iframeResizerSettings, this.settings.iframeId);
     }
   };
