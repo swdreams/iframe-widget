@@ -31,7 +31,7 @@ function init(iframeId, initialSettings = {}) {
   }
 
   this.getIframeId = () => {
-    return this.isModal() ? `dsw-${this.settings.api_key}-modal` : `${this.settings.iframeId}`
+    return this.isModal() ? `dsw-${this.settings.api_key}-modal` : `${this.settings.iframeId}`;
   }
 
   this.getIframeModalWrapId = () => {
@@ -51,7 +51,13 @@ function init(iframeId, initialSettings = {}) {
   }
 
   this.getIframeModalFireButton = () => {
-    return document.querySelectorAll(this.settings.iframeId)[0];
+    let ele;
+    if (typeof this.settings.iframeId === 'string') {
+      ele = document.querySelectorAll(this.settings.iframeId)[0];
+      return ele;
+    } else {
+      return this.settings.iframeId;
+    }
   }
 
   this.getCloseButton = () => {
@@ -150,13 +156,13 @@ function init(iframeId, initialSettings = {}) {
   }
 
   this.showWidgetModal = () => {
+    if (this.settings.log)
+    this.log('onShow modal');
     if (!this.getIframeModalWrap()) return;
 
     this.iframeEle.src = this.getUrl();
     this.getIframeModalWrap().classList.add('dsw-wrap-opened');
     this.getIframe().style.height = '270px';
-    // console.log(this.getIframe().style.height);
-    // console.log(this.getIframe().parentElement.clientHeight);
   };
 
   this.hideWidgetModal = () => {
@@ -169,13 +175,14 @@ function init(iframeId, initialSettings = {}) {
   this.initWidgetModal = () => {
     this.btnEle = this.getIframeModalFireButton();
     if (!this.btnEle) {
-      console.log(`button does not exist: ${this.settings.iframeId}`);
+      console.error(`button does not exist: ${this.settings.iframeId}`);
       return;
     }
 
     if (!this.iframeEle) {
-      this.addModalIframeCss();
-      const html = `
+      if (document.getElementsByClassName('.dsw-wrap').length < 1) {
+        this.addModalIframeCss();
+        const html = `
             <div id="${this.getIframeModalWrapId()}" class="dsw-wrap">
               ${this.getCloseButton()}
               <div style="max-height: 100%; overflow-y: auto">
@@ -191,7 +198,10 @@ function init(iframeId, initialSettings = {}) {
               </div>
             </div>
         `;
-      document.body.innerHTML += html;
+        const div = document.createElement('div');
+        div.innerHTML += html;
+        document.body.appendChild(div);
+      }
     }
 
     this.iframeEle = this.getIframe();
@@ -204,6 +214,10 @@ function init(iframeId, initialSettings = {}) {
     this.getIframeModalCloseButton().addEventListener('click',(e) => this.hideWidgetModal());
   };
 
+  this.log = (val) => {
+    if (this.settings.log) console.log(' [DSW] ', val);
+  }
+
   const l = () => {
     if (this.settings.widgetMode == 'modal') {
       this.initWidgetModal();
@@ -215,6 +229,7 @@ function init(iframeId, initialSettings = {}) {
   };
 
   if (checkLoaded()) {
+    this.log(document.readyState);
     l();
   } else {
     if (window.attachEvent) {
