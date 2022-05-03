@@ -214,11 +214,19 @@ function init(iframeId, initialSettings = {}) {
     }
   };
 
-  if (window.attachEvent) {
-    window.attachEvent('onload', l);
+  if (checkLoaded()) {
+    l();
   } else {
-    window.addEventListener('load', l, false);
+    if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('load', l, false);
+    }
   }
 };
+
+function checkLoaded() {
+  return document.readyState === "complete" /*|| document.readyState === "interactive"*/;
+}
 
 export {init, iframeResize};
