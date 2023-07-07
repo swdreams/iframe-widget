@@ -16,14 +16,7 @@ function init(iframeId, initialSettings = {}) {
   }
 
   this.iframeResizerSettings = {
-    log: initialSettings.log || false,
-    checkOrigin: initialSettings.checkOrigin || false,
-    onResized: (iframe,height,width,type) => {
-      // console.log(iframe, height, width, type);
-    },
-    onMessage: ({iframe,message}) => {
-      // console.log(iframe, message);
-    },
+    ...initialSettings,
   }
 
   this.isModal = () => {
