@@ -17,6 +17,18 @@ function init(iframeId, initialSettings = {}) {
 
   this.iframeResizerSettings = {
     ...initialSettings,
+    onMessage: (msgObj) => {
+      const {iframe,message} = msgObj ?? {};
+      if (!initialSettings.skipDefaultOnMessage) {
+        if (message && message.dappUrl)
+        {
+          window.open(message.dappUrl);
+        }
+      }
+      if (initialSettings.onMessage) {
+        initialSettings.onMessage(msgObj);
+      }
+    },
   }
 
   this.isModal = () => {
